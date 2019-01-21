@@ -1,6 +1,6 @@
 class Api::V1::RecipesController < Api::V1::BaseController
     protect_from_forgery with: :null_session
-    before_action :set_recipe, only: [ :show, :update ]
+    before_action :set_recipe, only: [ :show, :update, :destroy ]
     
     def index
         @recipes = Recipe.all  
@@ -15,6 +15,20 @@ class Api::V1::RecipesController < Api::V1::BaseController
         else
             render_error
         end
+    end
+
+    def create
+        @recipe = Recipe.new(recipe_params)
+        if @recipe.save
+            render :show, status: :created
+        else 
+            render_error
+        end
+    end
+
+    def destroy
+        @recipe.destroy
+        head :no_content
     end
 
     private
