@@ -38,7 +38,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
     end
 
     def recipe_params
-        params.require(:recipe).permit(:title, :method)
+        params.require(:recipe).permit(:title, :method, :image_url)
     end
 
     def render_error
