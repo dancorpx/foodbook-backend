@@ -17,6 +17,9 @@ class Api::V1::LoginController < Api::V1::BaseController
     end
 
     def login
+        print 'PRINTING ENV>>>'
+        # print wechat_user
+        print ENV
         @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
         render json: {
             userId: @user.id
