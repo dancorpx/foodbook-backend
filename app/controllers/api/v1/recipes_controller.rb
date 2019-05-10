@@ -1,5 +1,5 @@
 class Api::V1::RecipesController < Api::V1::BaseController
-    protect_from_forgery with: :null_session
+    # protect_from_forgery with: :null_session
     before_action :set_recipe, only: [ :show, :update, :destroy ]
     
     def index
