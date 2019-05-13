@@ -23,7 +23,8 @@ class Api::V1::LoginController < Api::V1::BaseController
         print Figaro.env.APP_SECRET
         @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
         render json: {
-            userId: @user.id
+            userId: @user.id,
+            userAvatar: @user.avatar
         }
     end
 end
