@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/login', to: 'login#login'
       resources :recipes, only: [ :index, :show, :update, :create, :destroy ]
+      resources :users, only: [:update]
     end
   end
 end
