@@ -3,7 +3,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
     before_action :set_recipe, only: [ :show, :update, :destroy ]
     
     def index
-        @recipes = Recipe.all  
+        @recipes = Recipe.all.includes(:user)  
     end
 
     def show
